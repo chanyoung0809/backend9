@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 등록페이지</title>
+</head>
+<body>
+  
+    <form id="upload" action="/dbupload" method="post">
+        <input type="text" name="title" required>
+        <input type="text" name="author" required>
+        <textarea name="content" required></textarea>
+        
+        <button id="submit" type="submit">게시글 등록완료</button>
+   </form>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 상세페이지</title>
+</head>
+<body>
+    <div><%- data.num %></div>
+    <div><%- data.title %></div>
+    <div><%- data.author %></div>
+    <div><%- data.content %></div>
+
+
+    <a href="/board/update/<%- data.num %>">수정</a>
+    <a href="/board/list">목록페이지로</a>
+</body>
+</html>

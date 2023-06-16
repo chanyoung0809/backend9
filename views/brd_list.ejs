@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 목록페이지</title>
+    <style>
+        ul, ol, li {list-style: none;}
+        a {text-decoration: none; color: #000;}
+        .listWrap { width: 1200px; display: flex; flex-wrap: wrap;}
+        .lists { width: 300px; margin: 30px; border: 1px solid #000;}
+        .paging {display: flex;}
+        .paging > li {margin: 0 10px;}
+        .paging .highlight > a { color:#C00; }
+    </style>
+</head>
+<body>
+    <div class="listWrap">
+        <% for(let i=0; i<data.length; i++){%>
+            <div class="lists">
+                <div><%- data[i].num %></div>
+                <a href="/board/detail/<%- data[i].num %>">
+                    <h2><%- data[i].title %></h2>
+                    <p><%- data[i].author %></p>
+                </a>
+            </div>
+        <% } %>
+    </div>
+
+    <!-- 페이징 번호 생성된 구간  처음 이전 1,2,3 다음 마지막. 페이지 번호는 무한히 길어질 수 있으므로 ing~로 보통 작명-->
+
+    <ul class="paging">
+        <!-- 이전 버튼 생성 작업 -->
+        <% if (blockStart > totalBlock) { %>
+            <!-- 페이징블록 시작번호가 그룹의 총 갯수보다 크다면 -->
+            <li><a href="?page=<%- blockStart - 1 %>">◀ 이전</a></li>
+        <% } %>
+        <!-- 페이지 번호들 반복문으로 생성 -->
+        <!-- 페이지 시작번호값부터 끝 번호까지 li태그 생성 -->
+        <% for(let i = blockStart; i <= blockEnd; i++) { %>
+            <% if (pageNumber == i) { %>
+                <!-- 현재 보고 있는 페이지 번호인 경우 활성화 -->
+                <li class="highlight"><a href="?page=<%- i %>"><%- i %></a></li>
+            <% } else { %>
+                <li><a href="?page=<%- i %>"><%- i %></a></li>
+            <% } %>
+        <% } %>
+        <!-- 다음 버튼 생성 작업 -->
+        <% if (blockNum < totalBlock) { %>
+            <!-- 페이징블록 시작번호가 그룹의 총 갯수보다 크다면 -->
+            <li><a href="?page=<%- blockEnd + 1 %>">다음 ▶</a></li>
+        <% } %>
+    </ul>
+    
+    <a href="/board/insert">게시글 등록페이지</a>
+</body>
+</html>

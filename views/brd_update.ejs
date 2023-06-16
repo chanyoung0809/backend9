@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 수정페이지</title>
+</head>
+<body>
+
+     <form id="upload" action="/dbupdate" method="post" enctype="multipart/form-data">
+
+        <input type="hidden" name="num" value="<%- data.num %>">
+        <input type="text" name="title" value="<%- data.title %>" required>
+        <input type="text" name="author" value="<%- data.author %>" required>
+        <textarea name="content" required><%- data.content %></textarea>
+
+        <button type="submit">게시글 수정완료</button>
+   </form>
+</body>
+</html>
